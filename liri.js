@@ -1,5 +1,6 @@
 require("dotenv").config();
 var axios = require("axios");
+var fs = require("fs");
 var keys = require("./keys.js");
 var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
@@ -42,7 +43,17 @@ switch (op) {
             }
         )
     case "do-what-it-says":
-
-    default:
-        // console.log(undefined);
+        fs.readFile("random.txt","utf8", (err,data) => {
+            if(err)
+            {
+                console.log(err);
+            }
+            var dataArr = data.split(",");
+            console.log(dataArr);
+            switch(dataArr[0]) {
+                case "spotify-this-song":
+                    op = dataArr[0];
+                
+            }
+        });
 }
