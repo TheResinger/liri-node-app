@@ -30,13 +30,6 @@ const spotifyThisSong = input => {
     }
     var i = 0;
     var returned = data.tracks.items;
-    var http = require("http");
-
-    var app = http.createServer(function(req, res) {
-      res.setHeader("Content-Type", "application/json");
-      res.end(JSON.stringify(returned, null, 3));
-    });
-    app.listen(3000);
     for (i = 0; i < returned.length; i++)
     {
       console.log("----------Artist Name----------");
