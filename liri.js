@@ -7,7 +7,21 @@ var spotify = new Spotify(keys.spotify);
 var op = process.argv[2];
 var input = process.argv[3];
 
-const concertThis = input => {};
+const concertThis = input => {
+  if (input === undefined)
+  {
+    input = "A Day To Remember";
+  }
+  let queryURL = "https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp";
+  axios.get(queryURL).then(response => {
+    var data = response.data;
+    for(var i = 0; i < data.length; i++)
+    {
+      console.log("----------Venue----------");
+      console.log("Venue Name : " + data[i].venue.name + " | " + "Venue Country : " + data[i].venue.country + " |  Venue City : " + data[i].venue.city + " | Date/Time " + data[i].datetime);
+    }
+  });
+};
 
 const spotifyThisSong = input => {
   spotify.search({ type: "track", query: input }, (err, data) => {
@@ -44,7 +58,6 @@ const movieThis = input => {
   let queryURL =
     "http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=trilogy";
   axios.get(queryURL).then(response => {
-    // console.log(response.data);
     console.log("----------Title----------");
     console.log(response.data.Title);
     console.log("----------Release Year----------");
@@ -62,7 +75,7 @@ const movieThis = input => {
   });
 };
 
-const doThis = input => {
+const doThis = () => {
   fs.readFile("random.txt", "utf8", (err, data) => {
     if (err) {
       console.log(err);
