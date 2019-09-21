@@ -12,7 +12,7 @@ This command takes in the input of a movie name and will output
 * Plot of the movie.
 * Actors in the movie.
 
-![Movie This 1](/assets/img/3RixgHj.png)
+![Movie This 1](/assets/img/3RixgHJ.png)
 ![Movie This 2](/assets/img/fbgG98t.png)
 
 If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
